@@ -1,0 +1,83 @@
+plugins {
+    id 'groovy'
+    id "java-gradle-plugin"
+    id "com.gradle.plugin-publish" version "0.12.0"
+}
+
+
+group 'com.github.ljhgithub'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+
+
+
+//apply plugin: "maven"
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: "file://D:/workspace/tmp/myRepo/")
+//
+//            pom {
+//                artifactId = "${project.name}"
+//                version = "1.0"
+//
+//            }
+//
+//
+//        }
+//    }
+//
+//}
+
+//task 'create-dirs' {
+//    doLast {
+//        sourceSets*.groovy.srcDirs*.each { it.mkdirs() }
+//        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+//    }
+//}
+
+
+
+gradlePlugin {
+  plugins {
+    greetingsPlugin {
+      id = 'com.github.ljhgithub.publish-flutter-aar'
+      implementationClass = 'com.pysun.flutter.PublishFlutterAarPlugin'
+      version = '1.2'
+    }
+  }
+}
+
+// The configuration example below shows the minimum required properties
+// configured to publish your plugin to the plugin portal
+pluginBundle {
+  website = 'https://github.com/ljhgithub'
+  vcsUrl = 'https://github.com/ljhgithub'
+  description = 'Support remote publish aar when building plugins AARs '
+  tags = ['flutter build aar', 'building plugins AARs']
+
+  plugins {
+    greetingsPlugin {
+      // id is captured from java-gradle-plugin configuration
+      displayName = 'PublishFlutterAarPlugin'
+    }
+  }
+
+    mavenCoordinates {
+    groupId = "com.github.ljhgithub"
+    artifactId = "publish-aar"
+    version = "1.0.0"
+  }
+}
