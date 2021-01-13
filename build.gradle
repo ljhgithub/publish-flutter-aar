@@ -55,7 +55,7 @@ gradlePlugin {
     greetingsPlugin {
       id = 'com.github.ljhgithub.publish-flutter-aar'
       implementationClass = 'com.pysun.flutter.PublishFlutterAarPlugin'
-      version = '1.2'
+      version = '1.5'
     }
   }
 }
@@ -64,7 +64,7 @@ gradlePlugin {
 // configured to publish your plugin to the plugin portal
 pluginBundle {
   website = 'https://github.com/ljhgithub'
-  vcsUrl = 'https://github.com/ljhgithub'
+  vcsUrl = 'https://github.com/ljhgithub/publish-flutter-aar'
   description = 'Support remote publish aar when building plugins AARs '
   tags = ['flutter build aar', 'building plugins AARs']
 
@@ -77,7 +77,7 @@ pluginBundle {
 
     mavenCoordinates {
     groupId = "com.github.ljhgithub"
-    artifactId = "publish-aar"
-    version = "1.0.0"
+    artifactId = "publish-flutter-aar"
+    version = "1.0.2"
   }
 }

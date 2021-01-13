@@ -14,12 +14,13 @@ class PublishFlutterAarPlugin implements Plugin<Project> {
             project.rootProject.subprojects.findAll { it.name != "app" }.each { subProject ->
                 subProject.tasks.findByName("uploadArchives").doFirst {
                     assert subProject.hasProperty("output-dir")
-                    if (mavenExt.useRemote) {
 
-                        File outRepoDir = new File("${subProject.property("output-dir")}${File.separator}outputs${File.separator}repo")
-                        if (!outRepoDir.exists()) {
+                    File outRepoDir = new File("${subProject.property("output-dir")}${File.separator}outputs${File.separator}repo")
+                    if (!outRepoDir.exists()) {
                             outRepoDir.mkdirs()
                         }
+                    if (mavenExt.useRemote) {
+
                         subProject.uploadArchives.repositories.mavenDeployer.repository(url: mavenExt.remoteUrl) {
                             authentication(userName: mavenExt.userName, password: mavenExt.password)
                         }
